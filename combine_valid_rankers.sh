@@ -16,7 +16,7 @@ for filename in valid_rankers_*.txt
 do
 
     year=$(echo $filename | sed 's/[^0-9]*//g')
-    if [ $year -gt $start_year ]
+    if [ $year -ge $start_year ]
     then
         if [ $i -eq 0 ]
         then

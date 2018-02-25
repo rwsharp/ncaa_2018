@@ -43,7 +43,7 @@ for year in range(2000, 2100):
                 train_dates.append(dt)
         print
 
-        threshold = 3
+        threshold = 5
 
         all_rankers = None
         for i, dt in enumerate(train_dates[-threshold:]):
@@ -96,4 +96,4 @@ for year in range(2000, 2100):
         output_files.append(output_file_full_path)
 
 script = os.path.join(base_path, 'combine_valid_rankers.sh')
-subprocess.call([script])
+subprocess.call([script, '2010'])
