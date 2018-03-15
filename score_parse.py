@@ -79,16 +79,17 @@ mr_pages = {2008: 74994,
             2018: 298892}
 
 for year, id in  mr_pages.iteritems():
-    print 'Getting data for {}.'.format(year)
+    if year == 2018:
+        print 'Getting data for {}.'.format(year)
 
-    teams_page = 'https://www.masseyratings.com/scores.php?s={}&sub=11590&all=1&mode=3&sch=on&exhib=on&format=2'.format(id)
-    games_page = 'https://www.masseyratings.com/scores.php?s={}&sub=11590&all=1&mode=3&sch=on&exhib=on&format=1'.format(id)
+        teams_page = 'https://www.masseyratings.com/scores.php?s={}&sub=11590&all=1&mode=3&sch=on&exhib=on&format=2'.format(id)
+        games_page = 'https://www.masseyratings.com/scores.php?s={}&sub=11590&all=1&mode=3&sch=on&exhib=on&format=1'.format(id)
 
-    teams = get_teams(teams_page)
-    games = get_games(games_page)
+        teams = get_teams(teams_page)
+        games = get_games(games_page)
 
-    games.to_csv('data/games_{}.csv'.format(year))
-    teams.to_csv('data/teams_{}.csv'.format(year))
+        games.to_csv('data/game_scores/games_{}.csv'.format(year))
+        teams.to_csv('data/game_scores/teams_{}.csv'.format(year))
 
 
 """

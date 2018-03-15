@@ -43,7 +43,7 @@ str_cols  = [col[0] for key, col in sorted(schema.iteritems()) if col[1] in (str
 output_file_names = list()
 
 threshold = 5
-for year in range(2010, 2016+1):
+for year in range(2010, 2017+1):
 
     rankings = pandas.read_csv(os.path.join(data_path, 'cb{}.csv'.format(year)),
                                header=None,
@@ -97,7 +97,7 @@ for year in range(2010, 2016+1):
         label = pandas.DataFrame({'name': rankings['team_name'].unique()})
 
         for ranker in rankings['ranker_id'].unique():
-            label = teams.merge(rankings[(rankings['date'] == label_date) & (rankings['ranker_id'] == ranker)][['team_name', 'rank']],
+            label = label.merge(rankings[(rankings['date'] == label_date) & (rankings['ranker_id'] == ranker)][['team_name', 'rank']],
                               left_on='name',
                               right_on='team_name',
                               how='left') \
@@ -106,7 +106,7 @@ for year in range(2010, 2016+1):
 
         label = label.dropna(axis=1, how='all')
 
-        label['median_rank'] = teams.median(axis=1)
+        label['median_rank'] = label.median(axis=1)
 
         label = label[['name', 'median_rank']]
 

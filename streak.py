@@ -1,7 +1,9 @@
 import pandas
 
-games = pandas.read_csv('data/games_2018.csv')
-teams = pandas.read_csv('data/teams_2018.csv')
+season = 2015
+
+games = pandas.read_csv('data/game_scores/games_{}.csv'.format(season))
+teams = pandas.read_csv('data/game_scores/teams_{}.csv'.format(season))
 
 games = games.drop('Unnamed: 0', axis=1)
 teams = teams.drop('Unnamed: 0', axis=1)
